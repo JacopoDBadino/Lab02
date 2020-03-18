@@ -10,40 +10,55 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 
-    @FXML
-    private ResourceBundle resources;
+	private AlienDictionary dizionario;
 
-    @FXML
-    private URL location;
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private TextField textImport;
+	@FXML
+	private URL location;
 
-    @FXML
-    private Button transButton;
+	@FXML
+	private TextField textImport;
 
-    @FXML
-    private TextArea spazioTesto;
+	@FXML
+	private Button transButton;
 
-    @FXML
-    private Button clearButton;
+	@FXML
+	private TextArea spazioTesto;
 
-    @FXML
-    void doClear(ActionEvent event) {
+	@FXML
+	private Button clearButton;
 
-    }
+	@FXML
+	void doClear(ActionEvent event) {
+		spazioTesto.setText("Welcome to Alien Dictionary v2020.");
+	}
 
-    @FXML
-    void transAction(ActionEvent event) {
+	@FXML
+	void transAction(ActionEvent event) {
 
-    }
+		String parolaImport = textImport.getText();
 
-    @FXML
-    void initialize() {
-        assert textImport != null : "fx:id=\"textImport\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert transButton != null : "fx:id=\"transButton\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert spazioTesto != null : "fx:id=\"spazioTesto\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert clearButton != null : "fx:id=\"clearButton\" was not injected: check your FXML file 'Scene.fxml'.";
+		if (parolaImport.contains(" ")) {
+			String[] wArr = parolaImport.split(" ");
+			dizionario.addWord(wArr[0], wArr[1]);
+		}
+		else {
+			String parolaCerc = dizionario.translate(parolaImport);
+			spazioTesto.appendText(parolaCerc);
+		}
+	}
 
-    }
+	@FXML
+	void initialize() {
+		assert textImport != null : "fx:id=\"textImport\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert transButton != null : "fx:id=\"transButton\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert spazioTesto != null : "fx:id=\"spazioTesto\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert clearButton != null : "fx:id=\"clearButton\" was not injected: check your FXML file 'Scene.fxml'.";
+	}
+
+	public void setDizionario(AlienDictionary dizionario) {
+		this.dizionario = dizionario;
+	}
 }
