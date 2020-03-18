@@ -30,12 +30,12 @@
             <HBox>
                <children>
                   <Label text="Alien Text" />
-                  <TextField>
+                  <TextField fx:id="textImport" promptText="Type something..">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Translate">
+                  <Button fx:id="transButton" mnemonicParsing="false" onAction="#transAction" text="Translate">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -47,7 +47,7 @@
             </HBox>
             <HBox>
                <children>
-                  <TextArea text="Welcome to Alien Dictionary v2020.">
+                  <TextArea fx:id="spazioTesto" editable="false" text="Welcome to Alien Dictionary v2020.">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -56,7 +56,7 @@
             </HBox>
             <HBox>
                <children>
-                  <Button mnemonicParsing="false" text="Clear Text">
+                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#doClear" text="Clear Text">
                      <HBox.margin>
                         <Insets left="400.0" top="10.0" />
                      </HBox.margin>
