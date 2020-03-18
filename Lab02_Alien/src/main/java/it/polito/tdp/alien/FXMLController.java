@@ -41,12 +41,26 @@ public class FXMLController {
 		String parolaImport = (textImport.getText()).toUpperCase();
 
 		if (parolaImport.contains(" ")) {
+			
 			String[] wArr = parolaImport.split(" ");
-			dizionario.addWord(wArr[0], wArr[1]);
-		}
-		else {
-			String parolaCerc = dizionario.translate(parolaImport);
-			spazioTesto.appendText("\nTraduzione '"+parolaImport+"': "+parolaCerc);
+			
+			if (dizionario.contieneNumero(wArr[0], wArr[1]) == false)
+				dizionario.addWord(wArr[0], wArr[1]);
+			
+			else
+				spazioTesto.appendText("\nInserire parole senza numeri!");
+			
+		} else {
+			if (dizionario.contieneNumero(parolaImport, "") == false) {
+
+				String parolaCerc = dizionario.translate(parolaImport);
+				if (parolaCerc != null)
+					spazioTesto.appendText("\nTraduzione '" + parolaImport + "': " + parolaCerc);
+				else
+					spazioTesto.appendText("\nParola Inesistente!");
+			} else
+				spazioTesto.appendText("\nInserire parole senza numeri!");
+
 		}
 	}
 
