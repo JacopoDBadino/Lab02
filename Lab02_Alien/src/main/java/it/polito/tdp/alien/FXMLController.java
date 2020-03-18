@@ -38,7 +38,7 @@ public class FXMLController {
 	@FXML
 	void transAction(ActionEvent event) {
 
-		String parolaImport = textImport.getText();
+		String parolaImport = (textImport.getText()).toUpperCase();
 
 		if (parolaImport.contains(" ")) {
 			String[] wArr = parolaImport.split(" ");
@@ -46,7 +46,7 @@ public class FXMLController {
 		}
 		else {
 			String parolaCerc = dizionario.translate(parolaImport);
-			spazioTesto.appendText(parolaCerc);
+			spazioTesto.appendText("\nTraduzione '"+parolaImport+"': "+parolaCerc);
 		}
 	}
 
