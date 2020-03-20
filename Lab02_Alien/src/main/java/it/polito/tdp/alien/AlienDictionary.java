@@ -4,22 +4,28 @@ import java.util.LinkedList;
 
 public class AlienDictionary {
 
-	private LinkedList<Word> parole;
+	private LinkedList<WordEnahnced> parole;
 
 	public AlienDictionary() {
-		parole = new LinkedList<Word>();
+		parole = new LinkedList<WordEnahnced>();
 	}
 
 	public void addWord(String alienWord, String translation) {
-		Word temp = new Word(alienWord, translation);
+		for (WordEnahnced w : parole)
+			if (w.getAlienWord().equals(alienWord)) {
+				w.WordEnahncedGiaEsistente(translation);
+				return;
+			}
+		WordEnahnced temp = new WordEnahnced(alienWord, translation);
 		parole.add(temp);
+		return;
 	}
 
-	public String translate(String wordX) {
+	public WordEnahnced translate(String wordX) {
 
-		for (Word w : this.parole)
+		for (WordEnahnced w : this.parole)
 			if (wordX.equals(w.getAlienWord()))
-				return w.getTranslation();
+				return w;
 
 		return null;
 	}

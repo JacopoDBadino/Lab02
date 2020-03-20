@@ -53,10 +53,12 @@ public class FXMLController {
 		} else {
 			if (dizionario.contieneNumero(parolaImport, "") == false) {
 
-				String parolaCerc = dizionario.translate(parolaImport);
-				if (parolaCerc != null)
-					spazioTesto.appendText("\nTraduzione '" + parolaImport + "': " + parolaCerc);
-				else
+				WordEnahnced parolaCerc = dizionario.translate(parolaImport);
+				if (parolaCerc != null) {
+					for (String parolaAtt : parolaCerc.getDizzi())
+					spazioTesto.appendText("\nTraduzione '" + parolaImport + "': " + parolaAtt);
+				}
+					else
 					spazioTesto.appendText("\nParola Inesistente!");
 			} else
 				spazioTesto.appendText("\nInserire parole senza numeri!");
